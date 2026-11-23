@@ -1,2 +1,5 @@
 django_judy/
 venv/
+__pycache__/
+*.pyc
+db.sqlite3
