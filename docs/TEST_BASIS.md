@@ -20,7 +20,7 @@ Module: leave applications (apply, cancel, approve, reject).
 
 ### W2: Approve or reject leave (admin)
 - Start: one Pending application exists, logged in as admin1.
-- Action: approve it, or reject it with a reason, at /leaves/admin/<id>/approve/ or /reject/.
+- Action: approve it, or reject it with a reason, at /leaves/admin/{id}/approve/ or /reject/.
 - Expected (approve): status Approved, approved_by and approved_at set, balance reduced by the duration, notification created.
 - Expected (reject): status Rejected, reason stored, rejected_by and rejected_at set, notification created.
 
@@ -37,12 +37,12 @@ Value chosen for registration: LeaveApplication.status (W1 creates it, W2 change
 |-------|--------|---------|
 | /accounts/login/ | GET, POST | log in |
 | /apply/ | GET, POST | submit application |
-| /leave/<id>/cancel/ | GET | cancel own Pending application |
-| /leave/<id>/ | GET | view application detail |
+| /leave/{id}/cancel/ | GET | cancel own Pending application |
+| /leave/{id}/ | GET | view application detail |
 | /balance/ | GET | view own balance |
 | /leaves/admin/ | GET | list all applications (admin) |
-| /leaves/admin/<id>/approve/ | GET | approve (admin) |
-| /leaves/admin/<id>/reject/ | POST | reject with reason (admin) |
+| /leaves/admin/{id}/approve/ | GET | approve (admin) |
+| /leaves/admin/{id}/reject/ | POST | reject with reason (admin) |
 
 ## Functional requirements
 | ID | Workflow | Requirement | Source |
