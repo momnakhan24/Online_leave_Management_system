@@ -53,3 +53,12 @@ def pending_application(employee):
         end_date="2026-12-03",
         message="Family event",
     )
+
+@pytest.fixture
+def other_employee_client(db, leave_types):
+    get_user_model().objects.create_user(
+        username="emp2", password=PASSWORD, email="emp2@example.test"
+    )
+    client = Client()
+    assert client.login(username="emp2", password=PASSWORD)
+    return client
