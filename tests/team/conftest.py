@@ -7,6 +7,12 @@ from users.models import LeaveType
 PASSWORD = "Test@12345"
 
 
+@pytest.fixture(autouse=True)
+def fast_password_hasher(settings):
+    """Use a fast hasher in tests only (the real hasher is deliberately slow)."""
+    settings.PASSWORD_HASHERS = ["django.contrib.auth.hashers.MD5PasswordHasher"]
+
+
 @pytest.fixture
 def leave_types(db):
     for name in ["Annual Leave", "Sick Leave", "Other Leave"]:
@@ -53,6 +59,7 @@ def pending_application(employee):
         end_date="2026-12-03",
         message="Family event",
     )
+
 
 @pytest.fixture
 def other_employee_client(db, leave_types):
