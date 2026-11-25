@@ -4,6 +4,9 @@ source = users, leave_management_system
 omit =
     */migrations/*
     tests/*
+    leave_management_system/asgi.py
+    leave_management_system/wsgi.py
+    users/tests.py
 
 [report]
 show_missing = True
