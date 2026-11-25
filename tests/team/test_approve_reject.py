@@ -85,3 +85,10 @@ def test_reject_with_empty_reason_is_refused(admin_client, pending_application):
 
     pending_application.refresh_from_db()
     assert pending_application.status == "Pending"
+
+
+def test_reject_creates_notification(admin_client, employee, pending_application):
+    """FR10: the employee is notified of the rejection."""
+    reject(admin_client, pending_application, "Team is short-staffed")
+
+    assert Notification.objects.filter(user=employee, message__contains="rejected").count() == 1
