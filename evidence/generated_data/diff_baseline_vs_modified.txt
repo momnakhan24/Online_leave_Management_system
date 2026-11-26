@@ -1,0 +1,10 @@
+﻿cases: 50 -> 50
+CHANGED  applyLeave.durationDays.BVA.max  20/True -> 10/True
+CHANGED  applyLeave.durationDays.BVA.max+1  21/False -> 11/False
+CHANGED  applyLeave.durationDays.BVA.max-1  19/True -> 9/True
+CHANGED  applyLeave.durationDays.EP.invalid_above_max  120/False -> 60/False
+CHANGED  applyLeave.durationDays.EP.valid_inside  10/True -> 5/True
+CHANGED  rejectLeave.rejection_reason.BVA.minLength  'x'/True -> 'xxx'/True
+CHANGED  rejectLeave.rejection_reason.BVA.minLength+1  'xx'/True -> 'xxxx'/True
+CHANGED  rejectLeave.rejection_reason.BVA.minLength-1  ''/False -> 'xx'/False
+CHANGED  rejectLeave.rejection_reason.EP.valid_typical  'xxxxx'/True -> 'xxxxxxx'/True

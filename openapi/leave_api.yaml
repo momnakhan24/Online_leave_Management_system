@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: Leave Management API (form endpoints)
+  version: 1.0.0
+  description: >
+    The application has no JSON API. These are its HTTP form endpoints for the two
+    selected workflows. Constraints marked x- come from docs/TEST_BASIS.md (business
+    rules BR1 and BR4). Baseline commit e64e3bc51b58c8cfc4f07105189b63121bb7f438.
+paths:
+  /apply/:
+    post:
+      operationId: applyLeave
+      summary: Employee applies for leave (Workflow 1)
+      x-role: employee
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ApplyRequest'
+      responses:
+        '302': {description: Application saved as Pending, redirect to the dashboard}
+        '200': {description: Form shown again with an error message, no record created}
+        '404': {description: Unknown leave type, no record created}
+  /leaves/admin/{id}/approve/:
+    get:
+      operationId: approveLeave
+      summary: Admin approves a Pending application (Workflow 2)
+      x-role: admin
+      parameters:
+        - $ref: '#/components/parameters/ApplicationId'
+      responses:
+        '302': {description: Application approved, balance deducted, redirect to the admin list}
+        '404': {description: No such application or caller is not an admin}
+  /leaves/admin/{id}/reject/:
+    post:
+      operationId: rejectLeave
+      summary: Admin rejects a Pending application with a reason (Workflow 2)
+      x-role: admin
+      parameters:
+        - $ref: '#/components/parameters/ApplicationId'
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RejectRequest'
+      responses:
+        '302': {description: Application rejected, reason stored, redirect to the admin list}
+        '404': {description: No such application or caller is not an admin}
+  /leave/{id}/cancel/:
+    get:
+      operationId: cancelLeave
+      summary: Employee cancels their own Pending application (Workflow 1)
+      x-role: employee
+      parameters:
+        - $ref: '#/components/parameters/ApplicationId'
+      responses:
+        '302': {description: Application cancelled, redirect to the history page}
+        '404': {description: No such application or not the owner}
+  /balance/:
+    get:
+      operationId: viewBalance
+      summary: Employee views their own leave balance (shared record)
+      x-role: employee
+      responses:
+        '200': {description: Balance page}
+        '302': {description: Anonymous caller redirected to login}
+components:
+  parameters:
+    ApplicationId:
+      name: id
+      in: path
+      required: true
+      description: Application number (ordinal of the seeded applications in the tests)
+      schema: {type: integer, minimum: 1}
+  schemas:
+    ApplyRequest:
+      type: object
+      required: [leave_type, startDate, endDate]
+      x-durationDays: {minimum: 1, maximum: 20}
+      properties:
+        leave_type:
+          type: string
+          enum: [Annual Leave, Sick Leave, Other Leave]
+        startDate: {type: string, format: date}
+        endDate: {type: string, format: date}
+        message: {type: string}
+    RejectRequest:
+      type: object
+      required: [rejection_reason]
+      properties:
+        rejection_reason: {type: string, minLength: 1}
