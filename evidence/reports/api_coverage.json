@@ -1,0 +1,16 @@
+{
+  "operations_documented": 5,
+  "operations_called": 5,
+  "status_codes_documented": 11,
+  "status_codes_observed_as_documented": 11,
+  "generated_cases": 50,
+  "generated_cases_executed": 50,
+  "endpoint_weaknesses_undocumented_status_codes": {
+    "applyLeave": [
+      500
+    ]
+  },
+  "never_called": [],
+  "documented_status_never_observed": {},
+  "generated_cases_not_run": []
+}
