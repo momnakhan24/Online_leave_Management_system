@@ -48,6 +48,10 @@ async function login(page, username, password = PASSWORD) {
   await page.getByRole('button', { name: 'Sign In' }).click();
 }
 
+async function logout(page) {
+  await page.goto('/logout/');
+}
+
 async function fillApplyForm(page, { type = 'Annual Leave', start, end, reason = 'Family event' }) {
   await page.goto('/apply/');
   await page.getByLabel('Leave Type').selectOption(type);
@@ -56,4 +60,4 @@ async function fillApplyForm(page, { type = 'Annual Leave', start, end, reason =
   await page.locator('#message').fill(reason);
 }
 
-module.exports = { test, expect, PASSWORD, reset, state, create, login, fillApplyForm };
+module.exports = { test, expect, PASSWORD, reset, state, create, login, logout, fillApplyForm };
