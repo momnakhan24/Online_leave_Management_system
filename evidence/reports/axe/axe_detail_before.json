@@ -1,0 +1,44 @@
+{
+  "screen": "detail",
+  "url": "http://127.0.0.1:8000/leave/5/",
+  "label": "before",
+  "violations": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "elements": [
+        ".topbar-logout",
+        ".page-header > div:nth-child(1) > .text-secondary",
+        ".btn-outline-secondary",
+        ".btn-outline-danger"
+      ]
+    },
+    {
+      "id": "landmark-one-main",
+      "impact": "moderate",
+      "help": "Document should have one main landmark",
+      "elements": [
+        "html"
+      ]
+    },
+    {
+      "id": "page-has-heading-one",
+      "impact": "moderate",
+      "help": "Page should contain a level-one heading",
+      "elements": [
+        "html"
+      ]
+    },
+    {
+      "id": "region",
+      "impact": "moderate",
+      "help": "All page content should be contained by landmarks",
+      "elements": [
+        ".topbar-brand",
+        ".topbar-actions",
+        ".main-wrapper"
+      ]
+    }
+  ]
+}

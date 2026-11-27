@@ -1,0 +1,59 @@
+{
+  "screen": "admin_list",
+  "url": "http://127.0.0.1:8000/leaves/admin/",
+  "label": "before",
+  "violations": [
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "elements": [
+        ".topbar-logout",
+        "a[target=\"_blank\"] > span",
+        ".page-header > div > p"
+      ]
+    },
+    {
+      "id": "landmark-one-main",
+      "impact": "moderate",
+      "help": "Document should have one main landmark",
+      "elements": [
+        "html"
+      ]
+    },
+    {
+      "id": "page-has-heading-one",
+      "impact": "moderate",
+      "help": "Page should contain a level-one heading",
+      "elements": [
+        "html"
+      ]
+    },
+    {
+      "id": "region",
+      "impact": "moderate",
+      "help": "All page content should be contained by landmarks",
+      "elements": [
+        ".topbar-brand",
+        ".topbar-actions",
+        ".page-header",
+        ".mb-4 > .card-header",
+        ".col-md-3:nth-child(1)",
+        ".col-md-2:nth-child(2)",
+        ".col-md-3:nth-child(3)",
+        ".col-md-2:nth-child(4)",
+        ".btn-outline-secondary",
+        ".card-header.justify-content-between.align-items-center",
+        "thead",
+        "td:nth-child(1)",
+        "td:nth-child(2)",
+        "td:nth-child(3)",
+        "td:nth-child(4)",
+        "td:nth-child(5)",
+        "td:nth-child(6)",
+        "td:nth-child(7)",
+        ".footer"
+      ]
+    }
+  ]
+}
