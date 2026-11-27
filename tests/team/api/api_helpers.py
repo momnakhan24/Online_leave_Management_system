@@ -25,7 +25,8 @@ class ApiSession(requests.Session):
 
     def __init__(self, base_url):
         super().__init__()
-        self.base_url = base_url
+        
+        self.base_url = base_url.replace("localhost", "127.0.0.1")
 
     def login(self, username, password=PASSWORD):
         self.get(self.base_url + "/accounts/login/")

@@ -1,0 +1,32 @@
+{
+  "name": "online_leave_management_system",
+  "version": "1.0.0",
+  "description": "A professional, full-featured web application built with Django for managing employee leave requests — from applying for leave to tracking approvals, all through a modern, responsive UI with a dedicated admin panel.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/momnakhan24/Online_leave_Management_system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/momnakhan24/Online_leave_Management_system/issues"
+  },
+  "homepage": "https://github.com/momnakhan24/Online_leave_Management_system#readme",
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.1",
+    "@playwright/test": "^1.65.1",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "chart.js": "^4.4.1"
+  }
+}
